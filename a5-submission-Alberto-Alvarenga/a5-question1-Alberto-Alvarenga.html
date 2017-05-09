@@ -1,0 +1,92 @@
+<!--
+===============================================
+Student Name: Alberto Alvarenga	
+Student Number: 14151918
+===============================================
+-->
+
+<html>
+	<head><title>Image Display</title>
+		<script>
+		
+			var imgArray = []; 
+			var slideIndex = 0;
+			var cyclingIndex = - 1;
+			var randomIndex = 0;
+			
+			
+			
+			function cycle(){
+				cyclingIndex++;
+				if (cyclingIndex == imgArray.length) {
+				    cyclingIndex = 0;
+				}
+				document.getElementById("cyclingBanner").src = imgArray[cyclingIndex];
+				setTimeout(cycle, 2000);
+			}
+	
+			function random(){
+			   randomIndex = Math.floor(Math.random(randomIndex) * 4)
+			   document.getElementById("randomDisplay").src = imgArray[randomIndex];
+			   setTimeout(random, 2000);
+			   
+			}
+			function slideShow() {
+			   slideIndex++;
+			   if   (slideIndex == imgArray.length) {
+			         slideIndex = 0;
+			}
+			   document.getElementById("slideShow").src = imgArray[slideIndex];
+			   setTimeout(slideShow, 10000); 
+			     
+			}
+			function doBack(){
+			   if(slideIndex > 0) {
+			       slideIndex--;
+			       document.getElementById("slideShow").src = imgArray[slideIndex];
+			   }	   
+			}
+			function doNext(){
+		      if(slideIndex < 4) {
+		          slideIndex++;
+		          document.getElementById("slideShow").src = imgArray[slideIndex];
+			   }
+			 }
+			 
+			function startup(){
+				imgArray[0]= "lions.gif";
+				imgArray[1]= "tigers.gif";
+				imgArray[2]= "bears.gif";
+				imgArray[3]= "ohmy.gif";
+				
+				
+				cycle();
+				random();
+				slideShow();
+				return;
+			}
+		</script>
+	
+	</head>
+	
+	<body onLoad = "startup()">
+			<h1 align="center"> Image Display </h1>
+		<div style="text-align:center">
+			<h2>Cycling Banner</h2>
+			<img src = "lions.gif" id="cyclingBanner" alt="Cycling Banner">
+		</div>
+		<hr/>
+		<div style="text-align:center">
+			<h2>Random Display</h2>
+			<img src = "lions.gif" id="randomDisplay" alt="Random Display">
+		</div>
+		<hr/>
+		<div style="text-align:center">
+			<h2>Slide Show</h2>
+			<img src = "lions.gif" id="slideShow" alt="Slide Show"></br>
+		<a href="javascript:doBack()">Back</a>
+		<a href="javascript:doNext()">Next</a>
+        </div>
+	</body>
+
+</html>
